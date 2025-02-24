@@ -10,10 +10,10 @@ import {
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import { ThemeProvider } from "next-themes";
 
+import { ThemeProvider } from "~/components/ThemeProvider";
 import { TRPCReactProvider } from "~/trpc/react";
-import ModeToggle from "~/components/ModeToggle";
+import { ModeToggle } from "~/components/ModeToggle";
 
 export const metadata: Metadata = {
     title: "Life List",
@@ -36,7 +36,12 @@ export default function RootLayout({
                     <link rel="icon" href="/favicon.ico" />
                 </head>
                 <body>
-                    <ThemeProvider>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
                         <TRPCReactProvider>
                             <main className="mx-8 justify-center lg:mx-96">
                                 <div className="my-8 flex flex-col">
